@@ -1,0 +1,56 @@
+def transfer(Accounts,ch,to_acc,am):
+    if (to_acc not in Accounts):
+        print("Invalid")
+    else:
+        Accounts[ch]-=am
+        Accounts[to_acc]+=am
+        print("Rs.{} has been {} to {}".format(am,to_acc,ch))
+
+def withdraw(Accounts,am,ch):
+    if(am>Accounts[ch]):
+        print("insuffiencient balance")
+    else:
+        Accounts[ch]-=am
+    print("{} has been deducted".format(am))
+    
+
+def deposit(Accounts,amt,ch):
+    Accounts[ch]+=amt
+    print("Rs.{} has credited to your account".format(amt))
+    
+def menu(Accounts,ch):
+    while True:
+        print("welcome to your account")
+        print("1.Check Balance \n2.Deposit \n3.withdraw \n4.transfer \n5.logout")
+        d = int(input("enter your choice:"))
+        if(d==1):
+            print("your balance is {}".format(Accounts[ch]))
+        elif(d==2):
+            amt=int(input("enter amount you want to deposit:"))
+            deposit(Accounts,amt,ch)
+        elif(d==3):
+            am = int(input("enter the amount you want to withdraw:"))
+            withdraw(Accounts,am,ch)
+        elif(d==4):
+            to_acc = int(input("enter the account number to transfer:"))
+            am = int(input("enter the amout to be withdrawm"))
+            if(am>Accounts[ch]):
+                print("insuffiecent")
+            else:
+                print("collect ur cash")
+            transfer(Accounts,ch,to_acc,am)
+        else:
+            print("loggedout")
+            break
+
+Accounts={101:1000,102:2000,103:5000}
+while True:
+    print("------BANK MANAGEMENT SYSTEM------")
+    ch = int(input("enter your account number:"))
+    if(ch in Accounts):
+        menu(Accounts,ch)
+    elif(ch==0):
+        print("exit system")
+        break
+    else:
+        print("Account doesnt exsist!")

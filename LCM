@@ -1,0 +1,11 @@
+a = int(input("Enter num1: "))
+b = int(input("Enter num2: "))
+if a > b:
+    greater = a
+else:
+    greater = b
+while True:
+    if greater % a == 0 and greater % b == 0:
+        print("The LCM of", a, "and", b, "is:", greater)
+        break
+    greater += 1

@@ -1,0 +1,16 @@
+num_teams = int(input("Enter the number of teams: "))
+teams = []
+for i in range(num_teams):
+    team_name = input(f"Enter the name of team {i+1}: ")
+    teams.append(team_name)
+meet = int(input("Enter the number of matches between each pair: "))
+match = []
+for i in range(num_teams - 1):
+    for j in range(i + 1, num_teams):
+        for k in range(meet):
+            match.append([teams[i], teams[j]])
+print("----------")
+index = 1
+for m in match:
+    print(f"Match {index}: {m[0]} vs {m[1]}")
+    index += 1
